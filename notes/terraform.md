@@ -5,6 +5,10 @@ Yes we do need a VPC, subnets, and security group for both
 - Postgres
 - EKS
 
+For EKS provisioning using Terraform, refer to 
+- https://l2c.northcoders.com/courses/ce-application-deployment/eks
+- https://github.com/northcoders/ce-kubernetes-eks-terraform/tree/main
+
 ### Do we need to setup IAM Policy for db?
 No we dont need IAM policy for DB creation. It has its own user and it doesn't require any additional authentication by default (unless you specify otherwise).
 
