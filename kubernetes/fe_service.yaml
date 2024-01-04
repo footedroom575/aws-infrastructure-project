@@ -1,0 +1,14 @@
+
+# Front-end Service 
+apiVersion: v1
+kind: Service
+metadata:
+  # can't add "-service" at end because "-" is not allowed in here 
+  name: fe
+spec:
+  selector:
+    app: fe-deployment
+  ports:
+  - port: 3000
+    targetPort: 80
+  type: LoadBalancer

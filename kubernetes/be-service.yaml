@@ -1,0 +1,16 @@
+
+# Back-end Service 
+apiVersion: v1
+kind: Service
+metadata:
+  # can't add "-service" at end because "-" is not allowed in here 
+  name: be
+spec:
+  selector:
+    app: be-deployment
+  ports:
+  # also need to add belowe address to our frontend .env
+  # http://be.default.svc.cluster.local:8080
+  - port: 8080
+    targetPort: 8080
+  type: LoadBalancer

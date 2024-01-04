@@ -1,0 +1,21 @@
+
+# Back-end Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: be-deployment
+spec:
+  selector:
+    matchLabels:
+      app: be-deployment
+  template:
+    metadata:
+      labels:
+        app: be-deployment
+    spec:
+      containers:
+      - name: be-deployment
+        image: #IMAGE_HERE
+        ports:
+        - containerPort: 8080
