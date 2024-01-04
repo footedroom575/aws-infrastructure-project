@@ -1,0 +1,21 @@
+
+# Front-end Deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fe-deployment
+spec:
+  selector:
+    matchLabels:
+      app: fe-deployment
+  template:
+    metadata:
+      labels:
+        app: fe-deployment
+    spec:
+      containers:
+      - name: fe-deployment
+        image: #IMAGE_HERE
+        ports:
+        - containerPort: 80
