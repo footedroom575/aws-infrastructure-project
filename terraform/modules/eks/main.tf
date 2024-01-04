@@ -25,9 +25,9 @@ module "eks" {
 
       instance_types = ["t3.small"]
 
-      min_size     = 1
-      max_size     = 1
-      desired_size = 1
+      min_size     = var.instance_size_limits.min_size
+      max_size     = var.instance_size_limits.max_size
+      desired_size = var.instance_size_limits.desired_size
     }
   }
 }
