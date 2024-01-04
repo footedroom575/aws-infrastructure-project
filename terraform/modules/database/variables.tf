@@ -19,11 +19,9 @@ variable "db_password" {
 variable "db_subnets" {
   description = "list of subnets for creating postgres database RDS"
   type = list(string)
-  default = [ "hola" ]
 }
 
 variable "db_security_group_ids" {
   description = "list of security groups for ingress to postgres database RDS on port 5432"
   type = list(string)
-  default = [ "hola" ]
 }

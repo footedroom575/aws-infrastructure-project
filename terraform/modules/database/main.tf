@@ -7,7 +7,7 @@ resource "aws_db_instance" "main" {
   allocated_storage = 20
   storage_type      = "gp2"
   engine            = "postgres"
-  engine_version    = "16.1"
+  engine_version    = "14.9"
   instance_class    = "db.t3.micro"
   port              = "5432"
 
@@ -30,7 +30,7 @@ resource "aws_db_instance" "main" {
   apply_immediately           = true
   deletion_protection         = false
   network_type                = "IPV4"
-  publicly_accessible         = false
+  publicly_accessible         = true
   storage_encrypted           = false
 
   ##
