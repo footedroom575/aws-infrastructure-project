@@ -8,8 +8,10 @@ module "vpc" {
   cidr = var.vpc_cidr
   azs  = var.availability_zones
 
-  enable_nat_gateway   = true
-  single_nat_gateway   = true
+  # configuring NAT restricts traffic to connect through NAT only which involves certain proxy setups to get to our desired network location
+  # making it false for now and will change it in future for security improvements
+  enable_nat_gateway   = false
+  single_nat_gateway   = false
   enable_dns_hostnames = true
 
   public_subnets = var.public_subnets

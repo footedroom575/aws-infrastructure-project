@@ -1,5 +1,16 @@
 # database module, main
 
+
+# Databse subnet group covering all public subnets
+resource "aws_db_subnet_group" "db_sn_group" {
+  name       = "db_sn_group"
+  subnet_ids = var.db_subnets # first subnet only for time being
+
+  tags = {
+    Name = "DB subnet group"
+  }
+}
+
 resource "aws_db_instance" "main" {
   ##
   # defaults
@@ -14,11 +25,13 @@ resource "aws_db_instance" "main" {
   ##
   # variables
   ##
-  db_name  = var.db_name
-  username = var.db_username
-  password = var.db_password
-  #db_subnet_group_name = var.db_subnets
-  #vpc_security_group_ids = var.db_security_group_ids
+  db_name                = var.db_name
+  username               = var.db_username
+  password               = var.db_password
+  db_subnet_group_name   = aws_db_subnet_group.db_sn_group.name
+  vpc_security_group_ids = var.db_security_group_ids
+  availability_zone      = var.az
+  multi_az               = false
 
   ##
   # settings
@@ -26,7 +39,6 @@ resource "aws_db_instance" "main" {
   skip_final_snapshot         = true
   allow_major_version_upgrade = false
   auto_minor_version_upgrade  = true
-  parameter_group_name        = "default.postgres16"
   apply_immediately           = true
   deletion_protection         = false
   network_type                = "IPV4"
