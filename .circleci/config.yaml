@@ -1,0 +1,41 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/configuration-reference
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@8.2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/configuration-reference/#jobs
+jobs:
+
+  build-and-test:
+    # These next lines define a Docker executor: https://circleci.com/docs/executor-types/
+    # We can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    working_directory: ~/ce-team-project-backend
+    docker:
+      # official circle verified image for openjdk:17
+      - image: cimg/openjdk:17.0.7
+      
+    steps:
+      # Checkout the code as the first step.
+      - checkout
+      # Use mvn clean and package as the standard maven build phase
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+          working_directory: ~/ce-team-project-backend
+      # Then run your tests!
+      - run:
+          name: Test
+          command: mvn test
+          working_directory: ~/ce-team-project-backend
+          
+
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/configuration-reference/#workflows
+workflows:
+  backend-app-pipeline: # 
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - build-and-test
