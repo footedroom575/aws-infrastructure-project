@@ -16,6 +16,11 @@ variable "db_password" {
   type = string
 }
 
+variable "az" {
+  description = "availability zone for postgres database RDS"
+  type = string
+}
+
 variable "db_subnets" {
   description = "list of subnets for creating postgres database RDS"
   type = list(string)
