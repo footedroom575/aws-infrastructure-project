@@ -1,3 +1,12 @@
+
+
+# Use this or cloud_providers.tf
+
+# For Local State Config
+
+# Description: 
+# This provider config is used to manage state locally. If you wish to use Terraform Cloud, comment below lines and uncomment cloud_providers.tf as per instructions.
+
 provider "aws" {
   region = var.region
 }
