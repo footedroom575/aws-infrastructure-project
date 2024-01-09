@@ -9,8 +9,8 @@ spec:
   selector:
     app: be-deployment
   ports:
-  # also need to add belowe address to our frontend .env
-  # http://be.default.svc.cluster.local:8080
+  # front needs to be connected via ingress (or any public address) as the backend needs to be public in order to work with react application. 
+  # Reason: React tries to make BE requests via browser meaning user should be able to access the backend publically
   - port: 8080
     targetPort: 8080
-  type: LoadBalancer
+  type: ClusterIP # making it private as now using Ingress Controller

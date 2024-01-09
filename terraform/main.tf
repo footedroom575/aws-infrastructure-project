@@ -40,6 +40,7 @@ module "database" {
   az                    = var.availability_zones[0]
 }
 
+# incase of Terraform Cloud, configure this module and providers.tf accordingly
 module "cloud-config" {
   source = "./modules/cloud-config"
 }
