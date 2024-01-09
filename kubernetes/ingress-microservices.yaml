@@ -5,24 +5,27 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: app-ig
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - http:
       paths:
-      # front end
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: fe
-            port:
-              number: 3000
       # back end
-      - path: /api
-        pathType: Prefix
+      - path: /be(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: be
             port:
               number: 8080
+      # front end
+      - path: /*(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: fe
+            port:
+              number: 3000
   ingressClassName: nginx
