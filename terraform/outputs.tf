@@ -15,3 +15,8 @@ output "region" {
   description = "Infrastructure region"
   value       = var.region
 }
+
+output "db_dns_address" {
+  description = "DNS address assigned when RDS database is created"
+  value = module.database.db_dns_address
+}
