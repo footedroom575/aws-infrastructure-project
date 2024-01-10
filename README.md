@@ -1,4 +1,4 @@
-  <p align="center"><img src="../media/images/logo.svg" width="200" height="200" alt="Logo" /></p>
+  <p align="center"><img src="media/images/logo.svg" width="200" height="200" alt="Logo" /></p>
   <h1 align="center" style="color: #0074D9;">Team Tertius</h1>
 
 ### Full Stack Web App Project
@@ -149,7 +149,7 @@ You can see if your ArgoCD pods deployed by running:
 kubectl get pods -n argocd
 ```
 And you should see something similar to: 
-![Alt text](argocdpods.png)
+![Alt text](media/argocdpods.png)
 
 #### Obtaining the ArgoCD password 
 To log in to the ArgoCD user interface you will need to obtain the password. 
