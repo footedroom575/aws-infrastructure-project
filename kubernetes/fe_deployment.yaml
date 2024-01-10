@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: fe-deployment
-        image: #IMAGE_HERE
+        image: footedroom575/ce-fe:1.0
         ports:
         - containerPort: 80
+        imagePullPolicy: Always # forced image pull 
