@@ -5,6 +5,11 @@ kind: Service
 metadata:
   # can't add "-service" at end because "-" is not allowed in here 
   name: be
+  labels:
+    app.kubernetes.io/part-of: be-monitor
+  annotations:
+    prometheus.io/port: "metrics-port"
+    prometheus.io/scrape: "true"
 spec:
   selector:
     app: be-deployment
